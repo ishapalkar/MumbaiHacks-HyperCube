@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "Risk Checker API",
+    "description": "Postman collection for testing Risk Checker Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Risk Check - Normal Transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"device-123\",\n  \"ip_address\": \"192.168.1.1\",\n  \"amount\": 100.0,\n  \"currency\": \"USD\",\n  \"merchant\": \"Amazon\",\n  \"user_id\": \"user-456\",\n  \"geo_location\": \"US\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/risk-check",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["risk-check"]
+        }
+      }
+    },
+    {
+      "name": "Risk Check - High Amount Transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"device-new-999\",\n  \"ip_address\": \"203.0.113.0\",\n  \"amount\": 10000.0,\n  \"currency\": \"USD\",\n  \"merchant\": \"Luxury Store\",\n  \"user_id\": \"user-789\",\n  \"geo_location\": \"Unknown\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/risk-check",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["risk-check"]
+        }
+      }
+    },
+    {
+      "name": "Risk Check - New Device",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"device-suspicious-666\",\n  \"ip_address\": \"192.0.2.1\",\n  \"amount\": 5000.0,\n  \"currency\": \"USD\",\n  \"merchant\": \"Electronics Store\",\n  \"user_id\": \"user-123\",\n  \"geo_location\": \"CN\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/risk-check",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["risk-check"]
+        }
+      }
+    },
+    {
+      "name": "Freeze Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token_id\": \"token-789\",\n  \"user_id\": \"user-456\",\n  \"reason\": \"Suspicious activity detected - multiple high-value transactions\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/freeze-token",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["freeze-token"]
+        }
+      }
+    },
+    {
+      "name": "Unfreeze Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token_id\": \"token-789\",\n  \"user_id\": \"user-456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/unfreeze-token",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["unfreeze-token"]
+        }
+      }
+    },
+    {
+      "name": "Get Token Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/token-status/token-789",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["token-status", "token-789"]
+        }
+      }
+    }
+  ]
+}
