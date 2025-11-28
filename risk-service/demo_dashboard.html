@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokenTrust Agentic AI - Demo Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #5a67d8;
+        }
+        .success {
+            background: #48bb78;
+        }
+        .warning {
+            background: #ed8936;
+        }
+        .danger {
+            background: #f56565;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .risk-low {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .risk-medium {
+            background: #fef5e7;
+            color: #c05621;
+        }
+        .risk-high {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-online {
+            background: #48bb78;
+        }
+        .status-offline {
+            background: #f56565;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 TokenTrust Agentic AI Dashboard</h1>
+            <p>Intelligent Transaction Security with Multi-Agent Architecture</p>
+            <div id="system-status">
+                <span class="status-indicator status-offline"></span>
+                <span id="status-text">Checking system status...</span>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Transaction Processing Form -->
+            <div class="card">
+                <h3>🎯 Process Transaction with Agentic AI</h3>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label>Token ID:</label>
+                        <input type="text" id="token" placeholder="tkn_example_123456789" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Merchant ID:</label>
+                        <input type="text" id="merchant_id" placeholder="merchant_store_001" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Amount (₹):</label>
+                        <input type="number" id="amount" placeholder="5000" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Risk Scenario:</label>
+                        <select id="risk-scenario">
+                            <option value="low">Low Risk (Auto-Approve)</option>
+                            <option value="medium" selected>Medium Risk (Freeze & Verify)</option>
+                            <option value="high">High Risk (Immediate Revoke)</option>
+                            <option value="custom">Custom Parameters</option>
+                        </select>
+                    </div>
+                    
+                    <div id="custom-params" style="display: none;">
+                        <div class="form-group">
+                            <label>Token Age (minutes):</label>
+                            <input type="number" id="token_age" value="60">
+                        </div>
+                        <div class="form-group">
+                            <label>Device Trust Score (0-100):</label>
+                            <input type="number" id="device_trust" min="0" max="100" value="65">
+                        </div>
+                        <div class="form-group">
+                            <label>Usual Location:</label>
+                            <input type="text" id="usual_location" value="Mumbai, India">
+                        </div>
+                        <div class="form-group">
+                            <label>Current Location:</label>
+                            <input type="text" id="current_location" value="Delhi, India">
+                        </div>
+                    </div>
+                    
+                    <button type="submit">🚀 Process with AI Agents</button>
+                    <button type="button" onclick="clearResults()">🧹 Clear</button>
+                </form>
+                
+                <div id="transaction-result" class="result" style="display: none;"></div>
+            </div>
+
+            <!-- Session Management -->
+            <div class="card">
+                <h3>📊 Session Management</h3>
+                
+                <div class="form-group">
+                    <label>Session ID:</label>
+                    <input type="text" id="session-id" placeholder="Enter session ID or process a transaction">
+                    <button onclick="checkSession()" style="margin-top: 10px;">🔍 Check Status</button>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <h4>🏪 Merchant Verification (For Testing)</h4>
+                    <select id="verification-result">
+                        <option value="true">✅ Customer Verified</option>
+                        <option value="false">❌ Customer Not Verified</option>
+                    </select>
+                    <input type="text" id="verified-by" placeholder="Verified by (e.g., manager_john)" style="margin-top: 5px;">
+                    <button onclick="submitVerification()" style="margin-top: 10px;">📞 Submit Merchant Response</button>
+                </div>
+                
+                <div id="session-result" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- System Analytics -->
+        <div class="card">
+            <h3>📈 System Analytics & Monitoring</h3>
+            <div class="grid">
+                <div>
+                    <button onclick="getAnalytics()">📊 Get Analytics</button>
+                    <button onclick="getHealth()">🏥 Health Check</button>
+                    <button onclick="cleanup()">🧹 Cleanup Sessions</button>
+                </div>
+                <div id="analytics-result"></div>
+            </div>
+        </div>
+
+        <!-- Real-time Log -->
+        <div class="card">
+            <h3>📋 Activity Log</h3>
+            <div id="activity-log" style="height: 200px; overflow-y: auto; background: #f7fafc; padding: 10px; border-radius: 5px;">
+                <div class="log-entry">🎯 TokenTrust Agentic AI Dashboard loaded</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        let currentSessionId = null;
+
+        // Check system status on load
+        window.onload = function() {
+            checkSystemStatus();
+        };
+
+        // Risk scenario presets
+        const riskScenarios = {
+            low: {
+                token_age_minutes: 10,
+                device_trust_score: 95,
+                usual_location: "Mumbai, India",
+                current_location: "Mumbai, India",
+                new_device: false,
+                vpn_detected: false,
+                unusual_time: false,
+                rushed_transaction: false,
+                recent_transactions: 1,
+                user_avg_amount: 200
+            },
+            medium: {
+                token_age_minutes: 120,
+                device_trust_score: 55,
+                usual_location: "Mumbai, India",
+                current_location: "Delhi, India",
+                new_device: true,
+                vpn_detected: false,
+                unusual_time: true,
+                rushed_transaction: true,
+                recent_transactions: 5,
+                user_avg_amount: 3000
+            },
+            high: {
+                token_age_minutes: 2000,
+                device_trust_score: 15,
+                usual_location: "Mumbai, India",
+                current_location: "Singapore",
+                new_device: true,
+                vpn_detected: true,
+                unusual_time: true,
+                rushed_transaction: true,
+                recent_transactions: 25,
+                user_avg_amount: 500
+            }
+        };
+
+        // Show/hide custom parameters
+        document.getElementById('risk-scenario').onchange = function() {
+            const customDiv = document.getElementById('custom-params');
+            customDiv.style.display = this.value === 'custom' ? 'block' : 'none';
+        };
+
+        // Check system status
+        async function checkSystemStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                
+                const indicator = document.querySelector('.status-indicator');
+                const statusText = document.getElementById('status-text');
+                
+                if (response.ok) {
+                    indicator.className = 'status-indicator status-online';
+                    statusText.textContent = `System Online - ${data.service} v${data.version}`;
+                    log('✅ System status: Online and ready');
+                } else {
+                    indicator.className = 'status-indicator status-offline';
+                    statusText.textContent = 'System Offline';
+                }
+            } catch (error) {
+                const indicator = document.querySelector('.status-indicator');
+                const statusText = document.getElementById('status-text');
+                indicator.className = 'status-indicator status-offline';
+                statusText.textContent = 'System Offline - Check if server is running';
+                log('❌ System status: Offline - ' + error.message);
+            }
+        }
+
+        // Process transaction
+        document.getElementById('transaction-form').onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const scenario = document.getElementById('risk-scenario').value;
+            let securityContext;
+            
+            if (scenario === 'custom') {
+                securityContext = {
+                    token_age_minutes: parseInt(document.getElementById('token_age').value),
+                    device_trust_score: parseInt(document.getElementById('device_trust').value),
+                    usual_location: document.getElementById('usual_location').value,
+                    current_location: document.getElementById('current_location').value,
+                    new_device: false,
+                    vpn_detected: false,
+                    unusual_time: false,
+                    rushed_transaction: false
+                };
+            } else {
+                securityContext = riskScenarios[scenario];
+            }
+            
+            const requestData = {
+                token: document.getElementById('token').value,
+                merchant_id: document.getElementById('merchant_id').value,
+                amount: parseFloat(document.getElementById('amount').value),
+                security_context: securityContext,
+                user_info: {
+                    user_id: "demo_user_001",
+                    account_age_days: 90,
+                    verified_user: true
+                },
+                transaction_metadata: {
+                    payment_method: "card",
+                    category: "retail"
+                }
+            };
+            
+            log(`🚀 Processing ${scenario} risk transaction...`);
+            
+            try {
+                const response = await fetch(`${API_BASE}/tokentrust/process`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    currentSessionId = result.session_id;
+                    document.getElementById('session-id').value = currentSessionId;
+                    
+                    displayTransactionResult(result);
+                    log(`✅ Transaction processed - Session: ${currentSessionId?.slice(0, 8)}...`);
+                } else {
+                    displayError('transaction-result', result.detail || 'Processing failed');
+                    log(`❌ Transaction failed: ${result.detail}`);
+                }
+            } catch (error) {
+                displayError('transaction-result', error.message);
+                log(`❌ Request failed: ${error.message}`);
+            }
+        };
+
+        // Display transaction result
+        function displayTransactionResult(result) {
+            const resultDiv = document.getElementById('transaction-result');
+            const riskScore = result.risk_assessment?.risk_score || 0;
+            
+            let className = 'result ';
+            if (riskScore < 30) className += 'risk-low';
+            else if (riskScore < 70) className += 'risk-medium';
+            else className += 'risk-high';
+            
+            resultDiv.className = className;
+            resultDiv.style.display = 'block';
+            
+            resultDiv.textContent = JSON.stringify({
+                session_id: result.session_id,
+                final_status: result.final_status,
+                token_status: result.token_status,
+                risk_score: riskScore,
+                decision_reasoning: result.decision_reasoning,
+                message: result.message
+            }, null, 2);
+        }
+
+        // Check session status
+        async function checkSession() {
+            const sessionId = document.getElementById('session-id').value;
+            if (!sessionId) {
+                alert('Please enter a session ID');
+                return;
+            }
+            
+            log(`🔍 Checking session ${sessionId.slice(0, 8)}... status`);
+            
+            try {
+                const response = await fetch(`${API_BASE}/tokentrust/session/${sessionId}`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    displaySessionResult(result);
+                    log(`📊 Session status retrieved: ${result.status}`);
+                } else {
+                    displayError('session-result', result.detail || 'Session not found');
+                    log(`❌ Session check failed: ${result.detail}`);
+                }
+            } catch (error) {
+                displayError('session-result', error.message);
+                log(`❌ Session check error: ${error.message}`);
+            }
+        }
+
+        // Display session result
+        function displaySessionResult(result) {
+            const resultDiv = document.getElementById('session-result');
+            resultDiv.className = 'result';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = JSON.stringify(result, null, 2);
+        }
+
+        // Submit merchant verification
+        async function submitVerification() {
+            const sessionId = document.getElementById('session-id').value;
+            const verified = document.getElementById('verification-result').value === 'true';
+            const verifiedBy = document.getElementById('verified-by').value || 'demo_merchant';
+            
+            if (!sessionId) {
+                alert('Please enter a session ID');
+                return;
+            }
+            
+            const requestData = {
+                session_id: sessionId,
+                verified: verified,
+                verified_by: verifiedBy,
+                method: "demo_verification",
+                notes: verified ? "Demo verification successful" : "Demo verification failed"
+            };
+            
+            log(`📞 Submitting merchant verification: ${verified ? 'VERIFIED' : 'NOT VERIFIED'}`);
+            
+            try {
+                const response = await fetch(`${API_BASE}/tokentrust/merchant-response`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    log(`✅ Merchant response submitted successfully`);
+                    // Wait a moment then check session status
+                    setTimeout(() => checkSession(), 2000);
+                } else {
+                    log(`❌ Merchant response failed: ${result.detail}`);
+                }
+            } catch (error) {
+                log(`❌ Verification submission error: ${error.message}`);
+            }
+        }
+
+        // Get analytics
+        async function getAnalytics() {
+            log('📊 Fetching system analytics...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/tokentrust/analytics`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('analytics-result').innerHTML = `
+                        <div class="result">
+                            <strong>System Status:</strong> ${result.system_status}<br>
+                            <strong>Active Sessions:</strong> ${result.active_sessions}<br>
+                            <strong>Total Verifications:</strong> ${result.verification_analytics?.total_verifications || 0}<br>
+                            <strong>Success Rate:</strong> ${((result.verification_analytics?.success_rate || 0) * 100).toFixed(1)}%
+                        </div>
+                    `;
+                    log('📊 Analytics retrieved successfully');
+                } else {
+                    log(`❌ Analytics failed: ${result.detail}`);
+                }
+            } catch (error) {
+                log(`❌ Analytics error: ${error.message}`);
+            }
+        }
+
+        // Health check
+        async function getHealth() {
+            log('🏥 Checking system health...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    log(`✅ Health check: ${result.status} - ${result.service} v${result.version}`);
+                } else {
+                    log(`❌ Health check failed`);
+                }
+            } catch (error) {
+                log(`❌ Health check error: ${error.message}`);
+            }
+        }
+
+        // Cleanup sessions
+        async function cleanup() {
+            log('🧹 Cleaning up old sessions...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/tokentrust/cleanup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ max_age_hours: 1 })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    log(`🧹 Cleaned ${result.sessions_cleaned} sessions, ${result.active_sessions_remaining} remaining`);
+                } else {
+                    log(`❌ Cleanup failed: ${result.detail}`);
+                }
+            } catch (error) {
+                log(`❌ Cleanup error: ${error.message}`);
+            }
+        }
+
+        // Display error
+        function displayError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.className = 'result danger';
+            element.style.display = 'block';
+            element.textContent = `Error: ${message}`;
+        }
+
+        // Clear results
+        function clearResults() {
+            document.getElementById('transaction-result').style.display = 'none';
+            document.getElementById('session-result').style.display = 'none';
+            document.getElementById('analytics-result').innerHTML = '';
+            currentSessionId = null;
+            document.getElementById('session-id').value = '';
+            log('🧹 Results cleared');
+        }
+
+        // Add log entry
+        function log(message) {
+            const logDiv = document.getElementById('activity-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>

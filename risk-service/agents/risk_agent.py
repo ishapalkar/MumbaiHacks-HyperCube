@@ -1,7 +1,11 @@
 import os
 import json
 from pathlib import Path
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
+
+# Load environment variables
+load_dotenv()
 
 class AgenticRiskAgent:
     def __init__(self, memory_path="agent_memory.json"):
@@ -12,6 +16,22 @@ class AgenticRiskAgent:
             model_name="llama-3.3-70b-versatile",
             api_key=self.groq_api_key
         )
+        
+        if not self.groq_api_key or self.groq_api_key == "your_groq_api_key_here":
+            raise ValueError(
+                "GROQ_API_KEY not found or not set properly. "
+                "Please set your Groq API key in the .env file. "
+                "Get one from: https://console.groq.com/"
+            )
+        
+        try:
+            self.model = ChatGroq(
+                temperature=0.3,
+                model_name="llama-3.3-70b-versatile",  # Updated: mixtral-8x7b-32768 is decommissioned
+                api_key=self.groq_api_key
+            )
+        except Exception as e:
+            raise ValueError(f"Failed to initialize Groq model: {str(e)}")
         
         # Load prompt template
         prompt_path = os.path.join(os.path.dirname(__file__), "../prompts/risk_agent_prompt.txt")

@@ -5,15 +5,30 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
+import os
+import asyncio
 from dotenv import load_dotenv
 from pymongo import MongoClient
 import redis
 from agents.risk_agent import AgenticRiskAgent  # <-- agentic AI
+import json
+from datetime import datetime
+
+# Import robust endpoints
+from endpoints import router as robust_router
+
+# Import legacy agents
+from agents.risk_agent import RiskAgent
+from agents.token_trust_orchestrator import TokenTrustOrchestrator
 
 # Load environment variables
 load_dotenv()
 
-app = FastAPI(title="Risk Checker Service", version="1.0.0")
+app = FastAPI(
+    title="TokenTrust Risk Service - Robust Edition", 
+    version="2.0.0",
+    description="Production-ready TokenTrust with canonical thresholds, idempotent operations, and proper audit logging"
+)
 
 # CORS middleware
 app.add_middleware(
@@ -23,6 +38,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include the robust endpoints under /v2 prefix
+app.include_router(robust_router, prefix="/v2", tags=["Robust API v2"])
 
 # Initialize MongoDB (optional for logging)
 try:
@@ -47,6 +65,11 @@ except:
 
 # Initialize Agentic Risk Agent
 risk_agent = AgenticRiskAgent(memory_path="agent_memory.json")
+# Initialize Risk Agent
+risk_agent = RiskAgent()
+
+# Initialize TokenTrust Orchestrator (Agentic AI System)
+orchestrator = TokenTrustOrchestrator()
 
 # Pydantic Models
 class SecurityContext(BaseModel):
@@ -67,6 +90,27 @@ class RiskCheckRequest(BaseModel):
     merchant_id: str
     amount: float
     security_context: SecurityContext
+
+# New models for Agentic AI System
+class TokenTrustRequest(BaseModel):
+    token: str
+    merchant_id: str
+    amount: float
+    security_context: SecurityContext
+    user_info: Optional[Dict[str, Any]] = None
+    transaction_metadata: Optional[Dict[str, Any]] = None
+
+class MerchantVerificationResponse(BaseModel):
+    session_id: str
+    verified: bool
+    verified_by: str
+    method: str = "phone_verification"
+    notes: Optional[str] = None
+
+class SessionStatusResponse(BaseModel):
+    session_id: str
+    status: str
+    current_step: Optional[str] = None
 
 # Helper Functions
 def get_device_history(device_id: str) -> Dict[str, Any]:
@@ -180,23 +224,299 @@ async def check_risk(request: RiskCheckRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Risk check failed: {str(e)}")
 
+# New Agentic AI Endpoints for TokenTrust System
+
+@app.post("/tokentrust/process")
+async def process_transaction_with_ai(request: TokenTrustRequest):
+    """
+    Complete TokenTrust Agentic AI Processing:
+    1. Risk Assessment
+    2. Decision Making (Approve/Freeze/Revoke)
+    3. Token Management
+    4. Merchant Communication for 2FA
+    5. Verification Process
+    6. Final Decision
+    """
+    try:
+        # Get user profile for enhanced analysis
+        user_profile = get_user_profile(request.token)
+        
+        # Prepare comprehensive transaction data
+        transaction_data = {
+            "token": request.token,
+            "merchant_id": request.merchant_id,
+            "amount": request.amount,
+            "token_age_minutes": request.security_context.token_age_minutes,
+            "device_trust_score": request.security_context.device_trust_score,
+            "usual_location": request.security_context.usual_location,
+            "current_location": request.security_context.current_location,
+            "user_history": request.security_context.user_history,
+            "recent_transactions": request.security_context.recent_transactions,
+            "user_avg_amount": request.security_context.user_avg_amount,
+            "new_device": request.security_context.new_device,
+            "vpn_detected": request.security_context.vpn_detected,
+            "unusual_time": request.security_context.unusual_time,
+            "rushed_transaction": request.security_context.rushed_transaction,
+            "user_profile": user_profile,
+            "user_info": request.user_info,
+            "transaction_metadata": request.transaction_metadata
+        }
+        
+        # Process through the complete agentic workflow
+        print(f"🚀 Starting TokenTrust AI processing for token {request.token[:8]}...")
+        result = await orchestrator.process_transaction(transaction_data)
+        
+        # Save detailed log to MongoDB
+        if mongo_enabled and risk_logs_collection is not None:
+            try:
+                log_entry = {
+                    "session_id": result.get("session_id"),
+                    "token": request.token,
+                    "merchant_id": request.merchant_id,
+                    "amount": request.amount,
+                    "security_context": request.security_context.dict(),
+                    "agentic_result": result,
+                    "timestamp": datetime.utcnow(),
+                    "workflow_type": "agentic_tokentrust"
+                }
+                risk_logs_collection.insert_one(log_entry)
+                print(f"📝 Logged agentic processing for session {result.get('session_id', 'unknown')[:8]}")
+            except Exception as e:
+                print(f"Warning: Failed to log agentic result: {str(e)}")
+        
+        # Build response based on decision action
+        decision_action = result.get("decision", {}).get("action")
+        response_data = {
+            "success": True,
+            "session_id": result.get("session_id"),
+            "risk_assessment": result.get("risk_assessment"),
+            "decision_reasoning": result.get("decision", {}).get("reasoning"),
+            "processing_time": len(result.get("workflow_steps", [])),
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        
+        # Only include final_status and token_status for completed workflows
+        if decision_action == "APPROVE" or decision_action == "REVOKE":
+            # Transaction is complete - include final status
+            response_data.update({
+                "final_status": result.get("final_result", {}).get("status"),
+                "token_status": result.get("final_result", {}).get("token_status"),
+                "workflow_completed": True,
+                "message": result.get("final_result", {}).get("message", "Processing completed")
+            })
+        elif decision_action == "FREEZE_AND_VERIFY":
+            # Transaction needs verification - don't reveal final status yet
+            response_data.update({
+                "workflow_completed": False,
+                "requires_merchant_verification": True,
+                "message": "Transaction requires merchant verification - please complete 2FA",
+                "next_step": "merchant_verification"
+            })
+        else:
+            # Fallback
+            response_data.update({
+                "workflow_completed": True,
+                "message": "Processing completed with unknown action"
+            })
+            
+        return response_data
+        
+    except Exception as e:
+        print(f"❌ TokenTrust processing failed: {str(e)}")
+        raise HTTPException(
+            status_code=500, 
+            detail=f"TokenTrust agentic processing failed: {str(e)}"
+        )
+
+@app.post("/tokentrust/merchant-response")
+async def submit_merchant_verification(response: MerchantVerificationResponse):
+    """
+    Endpoint for merchants to submit 2FA verification results
+    """
+    try:
+        # Convert verified boolean to user response string
+        user_response = "Yes, I authorized this transaction" if response.verified else "No, I did not authorize this transaction"
+        
+        # Process merchant response through orchestrator
+        result = await orchestrator.handle_merchant_response(
+            session_id=response.session_id,
+            user_response=user_response,
+            verification_method=response.method
+        )
+        
+        if result["status"] == "completed":
+            print(f"✅ Merchant verification completed for session {response.session_id[:8]}")
+            return {
+                "success": True,
+                "session_id": response.session_id,
+                "final_status": result.get("final_status"),
+                "token_status": result.get("token_status"),
+                "final_decision": result.get("final_decision"),
+                "message": result.get("message"),
+                "workflow_complete": True,
+                "verification_successful": result.get("verification_successful"),
+                "timestamp": datetime.utcnow().isoformat()
+            }
+        else:
+            raise HTTPException(status_code=400, detail=result.get("message", "Verification processing failed"))
+            
+    except Exception as e:
+        print(f"❌ Merchant response submission failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to submit merchant response: {str(e)}"
+        )
+
+@app.get("/tokentrust/session/{session_id}")
+async def get_session_status(session_id: str):
+    """
+    Get the current status of a TokenTrust processing session
+    """
+    try:
+        session_data = orchestrator.get_session_status(session_id)
+        
+        if not session_data:
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        return {
+            "session_id": session_id,
+            "status": session_data.get("status"),
+            "created_at": session_data.get("created_at"),
+            "current_step": session_data.get("steps", [])[-1].get("step") if session_data.get("steps") else None,
+            "risk_score": session_data.get("risk_result", {}).get("risk_score"),
+            "decision": session_data.get("decision", {}).get("action"),
+            "final_result": session_data.get("final_result"),
+            "workflow_steps": len(session_data.get("steps", [])),
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Session status retrieval failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to retrieve session status: {str(e)}"
+        )
+
+@app.get("/tokentrust/merchant/{merchant_id}/verifications")
+async def get_merchant_verifications(merchant_id: str):
+    """
+    Get pending verifications for a specific merchant
+    """
+    try:
+        pending_verifications = orchestrator.merchant_communicator.get_pending_verifications()
+        
+        # Filter for specific merchant
+        merchant_verifications = {
+            session_id: verification 
+            for session_id, verification in pending_verifications.items()
+            if verification.get("merchant_id") == merchant_id
+        }
+        
+        return {
+            "merchant_id": merchant_id,
+            "pending_verifications": len(merchant_verifications),
+            "verifications": merchant_verifications,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        print(f"❌ Merchant verification retrieval failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to retrieve merchant verifications: {str(e)}"
+        )
+
+@app.get("/tokentrust/analytics")
+async def get_tokentrust_analytics():
+    """
+    Get TokenTrust system analytics and performance metrics
+    """
+    try:
+        # Get verification analytics
+        verification_analytics = orchestrator.verification_agent.get_verification_analytics()
+        
+        # Get active sessions count
+        active_sessions = len(orchestrator.active_sessions)
+        
+        return {
+            "system_status": "operational",
+            "active_sessions": active_sessions,
+            "verification_analytics": verification_analytics,
+            "services": {
+                "risk_agent": "active",
+                "token_manager": "active", 
+                "merchant_communicator": "active",
+                "verification_agent": "active",
+                "orchestrator": "active"
+            },
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        print(f"❌ Analytics retrieval failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to retrieve analytics: {str(e)}"
+        )
+
+@app.post("/tokentrust/cleanup")
+async def cleanup_old_sessions(max_age_hours: int = 24):
+    """
+    Clean up old sessions to prevent memory leaks
+    """
+    try:
+        initial_count = len(orchestrator.active_sessions)
+        orchestrator.cleanup_old_sessions(max_age_hours)
+        final_count = len(orchestrator.active_sessions)
+        
+        cleaned_count = initial_count - final_count
+        
+        return {
+            "success": True,
+            "sessions_cleaned": cleaned_count,
+            "active_sessions_remaining": final_count,
+            "max_age_hours": max_age_hours,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        print(f"❌ Session cleanup failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to cleanup sessions: {str(e)}"
+        )
+
 @app.get("/health")
 def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "service": "Risk Checker - Score Evaluator",
-        "version": "1.0.0",
+        "service": "TokenTrust Agentic AI Risk Service",
+        "version": "2.0.0",
         "services": {
             "mongodb": "connected" if mongo_enabled else "optional (not connected)",
             "redis": "connected" if redis_enabled else "optional (not connected)",
-            "groq_ai": "ready"
+            "groq_ai": "ready",
+            "agentic_orchestrator": "active",
+            "token_manager": "active",
+            "merchant_communicator": "active",
+            "verification_agent": "active"
         },
         "risk_levels": {
-            "LOW": "0-29 (Safe)",
-            "MEDIUM": "30-69 (Verify)",
-            "HIGH": "70-100 (Block)"
-        }
+            "LOW": "0-29 (Approve)",
+            "MEDIUM": "30-69 (Freeze & Verify)",
+            "HIGH": "70-100 (Revoke)"
+        },
+        "workflow_capabilities": [
+            "Risk Assessment",
+            "Token Freezing/Unfreezing/Revoking",
+            "Merchant 2FA Communication",
+            "Automated Verification",
+            "Decision Making",
+            "Learning & Analytics"
+        ]
     }
 
 if __name__ == "__main__":

@@ -58,10 +58,11 @@ USER PROFILE (Historical Behavior Pattern):
 
 CRITICAL INSTRUCTION - FIRST TRANSACTION HANDLING:
 If user_profile shows "is_first_transaction": true, this is the user's FIRST transaction.
-- Automatically assign risk_score between 10-25 (LOW RISK)
-- Use decision: APPROVE
-- Explanation should say: "First transaction - establishing baseline behavior pattern. Low initial risk assigned."
-- DO NOT penalize for lack of history
+- START with base risk_score of 20 (LOW RISK)
+- BUT STILL APPLY ALL STANDARD RISK FACTORS BELOW
+- If final score > 30 after adding risk factors, DO NOT force it to be low risk
+- Use appropriate decision: APPROVE/CHALLENGE/FREEZE based on final score
+- Only mention "First transaction" if final score remains low after all calculations
 
 ANOMALY DETECTION (For Returning Users):
 If user_profile shows "is_first_transaction": false, compare CURRENT transaction against HISTORICAL PATTERN:
