@@ -1,0 +1,1428 @@
+{
+  "tok_002": {
+    "transactions": [
+      {
+        "token": "tok_002",
+        "merchant_id": "snapdeal",
+        "amount": 7000.0,
+        "token_age_minutes": 120,
+        "device_trust_score": 65,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "flipkart",
+        "amount": 15000.0,
+        "token_age_minutes": 100,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "snapdeal",
+        "amount": 7000.0,
+        "token_age_minutes": 120,
+        "device_trust_score": 65,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "flipkart",
+        "amount": 15000.0,
+        "token_age_minutes": 100,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "snapdeal",
+        "amount": 7000.0,
+        "token_age_minutes": 120,
+        "device_trust_score": 65,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "flipkart",
+        "amount": 15000.0,
+        "token_age_minutes": 100,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "snapdeal",
+        "amount": 7000.0,
+        "token_age_minutes": 120,
+        "device_trust_score": 65,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "flipkart",
+        "amount": 15000.0,
+        "token_age_minutes": 100,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_002",
+        "merchant_id": "snapdeal",
+        "amount": 7000.0,
+        "token_age_minutes": 120,
+        "device_trust_score": 65,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 10555.555555555555
+  },
+  "tok_003": {
+    "transactions": [
+      {
+        "token": "tok_003",
+        "merchant_id": "crypto_exchange",
+        "amount": 40000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_003",
+        "merchant_id": "crypto_exchange",
+        "amount": 40000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_003",
+        "merchant_id": "crypto_exchange",
+        "amount": 40000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_003",
+        "merchant_id": "crypto_exchange",
+        "amount": 40000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_003",
+        "merchant_id": "crypto_exchange",
+        "amount": 40000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 40000.0
+  },
+  "tok_004": {
+    "transactions": [
+      {
+        "token": "tok_004",
+        "merchant_id": "amazon",
+        "amount": 25000.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_004",
+        "merchant_id": "amazon",
+        "amount": 25000.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_004",
+        "merchant_id": "amazon",
+        "amount": 25000.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_004",
+        "merchant_id": "amazon",
+        "amount": 25000.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_004",
+        "merchant_id": "amazon",
+        "amount": 25000.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 25000.0
+  },
+  "tok_005": {
+    "transactions": [
+      {
+        "token": "tok_005",
+        "merchant_id": "unknown_merchant",
+        "amount": 100000.0,
+        "token_age_minutes": 2000,
+        "device_trust_score": 10,
+        "usual_location": "Chennai",
+        "current_location": "Dubai",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": true
+      },
+      {
+        "token": "tok_005",
+        "merchant_id": "unknown_merchant",
+        "amount": 100000.0,
+        "token_age_minutes": 2000,
+        "device_trust_score": 10,
+        "usual_location": "Chennai",
+        "current_location": "Dubai",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": true
+      },
+      {
+        "token": "tok_005",
+        "merchant_id": "unknown_merchant",
+        "amount": 100000.0,
+        "token_age_minutes": 2000,
+        "device_trust_score": 10,
+        "usual_location": "Chennai",
+        "current_location": "Dubai",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": true
+      },
+      {
+        "token": "tok_005",
+        "merchant_id": "unknown_merchant",
+        "amount": 100000.0,
+        "token_age_minutes": 2000,
+        "device_trust_score": 10,
+        "usual_location": "Chennai",
+        "current_location": "Dubai",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": true
+      },
+      {
+        "token": "tok_005",
+        "merchant_id": "unknown_merchant",
+        "amount": 100000.0,
+        "token_age_minutes": 2000,
+        "device_trust_score": 10,
+        "usual_location": "Chennai",
+        "current_location": "Dubai",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": true
+      }
+    ],
+    "avg_amount": 100000.0
+  },
+  "tok_008": {
+    "transactions": [
+      {
+        "token": "tok_008",
+        "merchant_id": "luxury_store",
+        "amount": 1000000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 20,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_008",
+        "merchant_id": "luxury_store",
+        "amount": 1000000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 20,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_008",
+        "merchant_id": "luxury_store",
+        "amount": 1000000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 20,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_008",
+        "merchant_id": "luxury_store",
+        "amount": 1000000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 20,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_008",
+        "merchant_id": "luxury_store",
+        "amount": 1000000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 20,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 1000000.0
+  },
+  "tok_009": {
+    "transactions": [
+      {
+        "token": "tok_009",
+        "merchant_id": "amazon",
+        "amount": 500.0,
+        "token_age_minutes": 15,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_009",
+        "merchant_id": "amazon",
+        "amount": 500.0,
+        "token_age_minutes": 15,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_009",
+        "merchant_id": "amazon",
+        "amount": 500.0,
+        "token_age_minutes": 15,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_009",
+        "merchant_id": "amazon",
+        "amount": 500.0,
+        "token_age_minutes": 15,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_009",
+        "merchant_id": "amazon",
+        "amount": 500.0,
+        "token_age_minutes": 15,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 500.0
+  },
+  "tok_001": {
+    "transactions": [
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2200.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2200.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2200.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 80,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_001",
+        "merchant_id": "amazon",
+        "amount": 2200.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 2080.0
+  },
+  "tok_010": {
+    "transactions": [
+      {
+        "token": "tok_010",
+        "merchant_id": "flipkart",
+        "amount": 3000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 70,
+        "usual_location": "Bangalore",
+        "current_location": "Bangalore",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_010",
+        "merchant_id": "flipkart",
+        "amount": 3000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 70,
+        "usual_location": "Bangalore",
+        "current_location": "Bangalore",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_010",
+        "merchant_id": "flipkart",
+        "amount": 3000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 70,
+        "usual_location": "Bangalore",
+        "current_location": "Bangalore",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_010",
+        "merchant_id": "flipkart",
+        "amount": 3000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 70,
+        "usual_location": "Bangalore",
+        "current_location": "Bangalore",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_010",
+        "merchant_id": "flipkart",
+        "amount": 3000.0,
+        "token_age_minutes": 20,
+        "device_trust_score": 70,
+        "usual_location": "Bangalore",
+        "current_location": "Bangalore",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 3000.0
+  },
+  "tok_012": {
+    "transactions": [
+      {
+        "token": "tok_012",
+        "merchant_id": "electronics_store",
+        "amount": 50000.0,
+        "token_age_minutes": 40,
+        "device_trust_score": 50,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_012",
+        "merchant_id": "electronics_store",
+        "amount": 50000.0,
+        "token_age_minutes": 40,
+        "device_trust_score": 50,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_012",
+        "merchant_id": "electronics_store",
+        "amount": 50000.0,
+        "token_age_minutes": 40,
+        "device_trust_score": 50,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_012",
+        "merchant_id": "electronics_store",
+        "amount": 50000.0,
+        "token_age_minutes": 40,
+        "device_trust_score": 50,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_012",
+        "merchant_id": "electronics_store",
+        "amount": 50000.0,
+        "token_age_minutes": 40,
+        "device_trust_score": 50,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 50000.0
+  },
+  "tok_014": {
+    "transactions": [
+      {
+        "token": "tok_014",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 25,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_014",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 25,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_014",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 25,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_014",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 25,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_014",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 25,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": true,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 4500.0
+  },
+  "tok_015": {
+    "transactions": [
+      {
+        "token": "tok_015",
+        "merchant_id": "crypto_exchange",
+        "amount": 20000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_015",
+        "merchant_id": "crypto_exchange",
+        "amount": 20000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_015",
+        "merchant_id": "crypto_exchange",
+        "amount": 20000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_015",
+        "merchant_id": "crypto_exchange",
+        "amount": 20000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_015",
+        "merchant_id": "crypto_exchange",
+        "amount": 20000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 40,
+        "usual_location": "Bangalore",
+        "current_location": "Singapore",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 20000.0
+  },
+  "tok_016": {
+    "transactions": [
+      {
+        "token": "tok_016",
+        "merchant_id": "local_store",
+        "amount": 3500.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_016",
+        "merchant_id": "local_store",
+        "amount": 3500.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_016",
+        "merchant_id": "local_store",
+        "amount": 3500.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_016",
+        "merchant_id": "local_store",
+        "amount": 3500.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_016",
+        "merchant_id": "local_store",
+        "amount": 3500.0,
+        "token_age_minutes": 30,
+        "device_trust_score": 60,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 3500.0
+  },
+  "tok_017": {
+    "transactions": [
+      {
+        "token": "tok_017",
+        "merchant_id": "luxury_store",
+        "amount": 120000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 10,
+        "usual_location": "Delhi",
+        "current_location": "London",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_017",
+        "merchant_id": "luxury_store",
+        "amount": 120000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 10,
+        "usual_location": "Delhi",
+        "current_location": "London",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_017",
+        "merchant_id": "luxury_store",
+        "amount": 120000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 10,
+        "usual_location": "Delhi",
+        "current_location": "London",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_017",
+        "merchant_id": "luxury_store",
+        "amount": 120000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 10,
+        "usual_location": "Delhi",
+        "current_location": "London",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_017",
+        "merchant_id": "luxury_store",
+        "amount": 120000.0,
+        "token_age_minutes": 50,
+        "device_trust_score": 10,
+        "usual_location": "Delhi",
+        "current_location": "London",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": true,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 120000.0
+  },
+  "tok_019": {
+    "transactions": [
+      {
+        "token": "tok_019",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 1500,
+        "device_trust_score": 50,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_019",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 1500,
+        "device_trust_score": 50,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_019",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 1500,
+        "device_trust_score": 50,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_019",
+        "merchant_id": "flipkart",
+        "amount": 4500.0,
+        "token_age_minutes": 1500,
+        "device_trust_score": 50,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": true,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 4500.0
+  },
+  "tok_020": {
+    "transactions": [
+      {
+        "token": "tok_020",
+        "merchant_id": "crypto_exchange",
+        "amount": 80000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 30,
+        "usual_location": "Bangalore",
+        "current_location": "USA",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_020",
+        "merchant_id": "crypto_exchange",
+        "amount": 80000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 30,
+        "usual_location": "Bangalore",
+        "current_location": "USA",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_020",
+        "merchant_id": "crypto_exchange",
+        "amount": 80000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 30,
+        "usual_location": "Bangalore",
+        "current_location": "USA",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_020",
+        "merchant_id": "crypto_exchange",
+        "amount": 80000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 30,
+        "usual_location": "Bangalore",
+        "current_location": "USA",
+        "new_device": true,
+        "vpn_detected": true,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 80000.0
+  },
+  "tok_006": {
+    "transactions": [
+      {
+        "token": "tok_006",
+        "merchant_id": "amazon",
+        "amount": 0.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 90,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_006",
+        "merchant_id": "amazon",
+        "amount": 0.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 90,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_006",
+        "merchant_id": "amazon",
+        "amount": 0.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 90,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_006",
+        "merchant_id": "amazon",
+        "amount": 0.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 90,
+        "usual_location": "Delhi",
+        "current_location": "Delhi",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 0.0
+  },
+  "tok_007": {
+    "transactions": [
+      {
+        "token": "tok_007",
+        "merchant_id": "flipkart",
+        "amount": 5000.0,
+        "token_age_minutes": 100000,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_007",
+        "merchant_id": "flipkart",
+        "amount": 5000.0,
+        "token_age_minutes": 100000,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_007",
+        "merchant_id": "flipkart",
+        "amount": 5000.0,
+        "token_age_minutes": 100000,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_007",
+        "merchant_id": "flipkart",
+        "amount": 5000.0,
+        "token_age_minutes": 100000,
+        "device_trust_score": 50,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 5000.0
+  },
+  "tok_011": {
+    "transactions": [
+      {
+        "token": "tok_011",
+        "merchant_id": "small_shop",
+        "amount": 7000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_011",
+        "merchant_id": "small_shop",
+        "amount": 7000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_011",
+        "merchant_id": "small_shop",
+        "amount": 7000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_011",
+        "merchant_id": "small_shop",
+        "amount": 7000.0,
+        "token_age_minutes": 60,
+        "device_trust_score": 70,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 7000.0
+  },
+  "tok_013": {
+    "transactions": [
+      {
+        "token": "tok_013",
+        "merchant_id": "amazon",
+        "amount": 1200.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 90,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_013",
+        "merchant_id": "amazon",
+        "amount": 1200.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 90,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_013",
+        "merchant_id": "amazon",
+        "amount": 1200.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 90,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_013",
+        "merchant_id": "amazon",
+        "amount": 1200.0,
+        "token_age_minutes": 10,
+        "device_trust_score": 90,
+        "usual_location": "Chennai",
+        "current_location": "Chennai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 1200.0
+  },
+  "tok_018": {
+    "transactions": [
+      {
+        "token": "tok_018",
+        "merchant_id": "amazon",
+        "amount": 1000.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_018",
+        "merchant_id": "amazon",
+        "amount": 1000.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_018",
+        "merchant_id": "amazon",
+        "amount": 1000.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      },
+      {
+        "token": "tok_018",
+        "merchant_id": "amazon",
+        "amount": 1000.0,
+        "token_age_minutes": 5,
+        "device_trust_score": 85,
+        "usual_location": "Mumbai",
+        "current_location": "Mumbai",
+        "new_device": false,
+        "vpn_detected": false,
+        "unusual_time": null,
+        "rushed_transaction": null
+      }
+    ],
+    "avg_amount": 1000.0
+  }
+}
