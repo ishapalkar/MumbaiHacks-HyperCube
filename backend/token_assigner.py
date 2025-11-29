@@ -50,6 +50,21 @@ class TokenAssignRequest(BaseModel):
     merchant_id: str
     idempotency_key: str
 
+
+class UIAssignRequest(BaseModel):
+    # Fields expected from frontend UI
+    token: Optional[str]
+    merchant_id: str
+    amount: float
+    token_age_minutes: Optional[int] = 0
+    device_trust_score: Optional[float] = 1.0
+    usual_location: Optional[str] = None
+    current_location: Optional[str] = None
+    new_device: Optional[bool] = False
+    vpn_detected: Optional[bool] = False
+    unusual_time: Optional[bool] = False
+    rushed_transaction: Optional[bool] = False
+
 class TokenResponse(BaseModel):
     token_id: str
     expires_at: datetime
@@ -191,6 +206,66 @@ async def assign_token(
         
     except Exception as e:
         print(f"Error assigning token: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+
+@app.post("/ui/assign-token")
+async def ui_assign_token(request: UIAssignRequest):
+    """Lightweight endpoint for UI/demo to assign a token based on frontend inputs.
+
+    This endpoint intentionally does not require merchant auth for local demo usage.
+    """
+    try:
+        token_id = request.token or f"tok_{uuid.uuid4().hex[:12]}"
+        issued_at = datetime.utcnow()
+        expires_at = issued_at + timedelta(hours=1)
+
+        token_doc = {
+            "token_id": token_id,
+            "customer_id": None,
+            "merchant_id": request.merchant_id,
+            "payment_reference": None,
+            "amount": request.amount,
+            "currency": "INR",
+            "idempotency_key": str(uuid.uuid4()),
+            "issued_at": issued_at,
+            "expires_at": expires_at,
+            "status": "active",
+            "security_context": {
+                "token_age_minutes": request.token_age_minutes,
+                "device_trust_score": request.device_trust_score,
+                "usual_location": request.usual_location,
+                "current_location": request.current_location,
+                "new_device": request.new_device,
+                "vpn_detected": request.vpn_detected,
+                "unusual_time": request.unusual_time,
+                "rushed_transaction": request.rushed_transaction
+            }
+        }
+
+        # Insert document
+        await database.tokens.insert_one(token_doc)
+
+        # Emit socket event for UI interactivity
+        room_name = f"merchant:{request.merchant_id}"
+        await sio.emit(
+            "token.assigned",
+            {
+                "token_id": token_id,
+                "amount": request.amount,
+                "status": "active",
+                "issued_at": issued_at.isoformat(),
+                "expires_at": expires_at.isoformat(),
+                "security_context": token_doc["security_context"]
+            },
+            room=room_name,
+            namespace="/merchant"
+        )
+
+        return {"token_id": token_id, "expires_at": expires_at.isoformat(), "status": "active"}
+
+    except Exception as e:
+        print(f"Error in ui_assign_token: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
 @app.get("/tokens")
